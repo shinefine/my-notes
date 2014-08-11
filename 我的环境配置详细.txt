@@ -119,12 +119,8 @@ install: --no-rdoc --no-ri
 update: --no-rdoc --no-ri
 
 -------------------------------------------------------------------------
+关于 git  (详细内容参见git技巧文档)
 
-自定义 git 颜色
- git config --global color.ui true
-
-自定义shell 颜色
-设置颜色可以在Linux用户个人的Shell配置文件~/.bashrc中完成，或者在全局配置文件/etc/bashrc中实现。 ，去掉里面的其中一行注释即可
 
 
 
@@ -187,7 +183,14 @@ rubymine  的相关ide设置：
 
 -------linux 配置------------
 
-实时显示网络流量的插件
+
+【自定义shell 颜色】
+
+设置颜色可以在Linux用户个人的Shell配置文件~/.bashrc中完成，或者在全局配置文件/etc/bashrc中实现。 ，去掉里面的其中一行注释即可
+
+
+
+【实时显示网络流量的插件】
 
 http://blog.winclient.cn/linux/138.html
 添加PPA源安装Netspeed
@@ -204,7 +207,7 @@ sudo apt-get install indicator-netspeed
 
 indicator-netspeed 
 
-如果要开机自动执行 Netspeed，则需要手动在 Unity 面板中的 “启动应用程序”中创建开机启动项目。具体可以参看之前一篇文章的最后部分。 http://blog.winclient.cn/linux/72.html
+如果要开机自动执行 Netspeed，则需要手动在 Unity 面板中的 “启动应用程序”中创建开机启动项目。具体可以参看之前一篇文章的最后部分。 http://blog.winclient.cn/linux/72.html  （这篇文章介绍了一个系统信息监控的工具）
 
 
 
