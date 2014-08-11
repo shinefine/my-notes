@@ -77,6 +77,22 @@ rvm install 1.9.3
 
 
 
+---------------以前用rvm来管理 ruby版本，现在决定用简单的rbenv来管理ruby版本
+
+需要先安装工具 curl 
+   apt-get install curl
+然后参考rbenv install的文档（https://github.com/fesplugas/rbenv-installer）   执行
+curl https://raw.githubusercontent.com/fesplugas/rbenv-installer/master/bin/rbenv-installer | bash 
+来安装rbenv 及其其它相关的插件
+
+rbenv 安装完成后，记得将其初始化脚本放入 .bashrc 文件中
+
+然后执行 rbenv install bootstrap-ubuntu-12-04 来安装ruby所依赖的环境。
+
+然后可以安装ruby了   rbenv install 2.1.2 (安装时等的有点久，而且看不到进度)
+
+-----------------------------------------------------
+
 
 
 
