@@ -1,0 +1,211 @@
+ruby-china上的一篇帖子，指导了如何在各个系统os，windows，linux 下安装rails 环境
+https://ruby-china.org/wiki/install_ruby_guide/
+
+
+也可以参看教程书 【翻译】初学教程 railstutorial 2nd cn.pdf 中的指导，里面讲述了如何安装rails步骤(rvm-ruby -gem- rails )，注意这一步：
+
+介绍了 配置 GEM  使得在安装各个gem时候不生成文档 rdoc ri。
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+注意，安装完ubuntu后，第一件是就是更换软件升级更新源地址，换成163的源后，更新速度很快，详细见文章（Ubuntu 12.04更新源 - eastson - 博客园.htm）：
+、
+
+如果是虚拟机，安装vmwaretools （有必要）安装后就可以在windows和虚拟机之间拖动文件了
+------------------------------------------------
+
+安装ruby前首先要安装rvm
+
+根据指导文章，安装rvm时出现错误
+
+$ bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
+报错：未预期的符号 `newline' 附近有语法错误
+
+另一篇指导文章里的命令：
+ bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)
+那个地址国内无法访问到。
+
+
+
+另一篇指导文章里使用这个命令（RVM安装管理多个ruby版本以及多个rails版本 - 东升红日辉万里，明泽润物彻古今 - ITeye技术网站.htm）
+
+$ \curl -L https://get.rvm.io | sudo bash -s stable  
+
+报错无法下载包
+'https://github.com/wayneeseguin/rvm/archive/stable.tar.gz'
+
+最后，
+到官网上去看官网文档 （http://rvm.io/rvm/install） ，使用这个指令
+\curl -sSL https://get.rvm.io | bash
+
+成功安装（该指令下载的包为https://github.com/wayneeseguin/rvm/archive/master.tar.gz
+），根据成功提示，需要执行一下
+source /home/shinefine/.rvm/scripts/rvm
+
+这个时候执行
+$ type rvm | head -1
+就已经可以返回“rvm is a function”(rvm 是函数)的消息了，所以我没有再额外（不知会不会有问题）执行指导文章里的代码:
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+
+
+
+
+-------------------安装 ruby   --------------------
+rvm 安装成功后，根据指导文章安装ruby ，我安装版本2.0.0 由于国内网络原因，下载速度为0
+
+----------------------网上某篇文章指出了解决办法--------------------------
+用 RVM (Ruby Version Manager) 安装 Ruby 1.9.3，到了下载 Ruby 源代码的那一步就卡住了。自己上 Ruby 官方网站看，确实下载不下来，速度几乎是0，从公司换到家里的网络还是一样。
+
+后来跑到 ~/.rvm/archive  2.s 里看了一下，发现正在下载的文件是 ruby-1.9.3-p286.tar.bz2. 于是跑到 Google 上找到一个 mirror，自己下载回来覆盖了 RVM 下载了一点点的那个文件，然后重新运行
+
+rvm install 1.9.3
+顺利安装完成。看来 RVM 会在 archives 目录里检查文件的 checksum，一致的话就不会重新下载了。我觉得加一个选项让人可以指定源代码文件安装比较好，不过人家国外应该不会出现我们这种情况吧。
+
+----------------------------------------------------------------------------
+
+方法一： 将rvm的安装源改变为taobao源，详细见 http://ruby.taobao.org/
+
+方法二：
+手动需要下载对应的ruby包可以在taobao源上找到  http://ruby.taobao.org/mirrors/ruby/
+
+下载好后（我下载的是ruby-2.0.0-p451.tar.bz2），覆盖rvm的下载目录中的下载文件，然后重新执行 rvm install 2.0.0 ，成功安装
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------更改gem源地址------------------------------------
+
+
+因为GFW的缘故，很多时候下载gem的时候，相应非常慢，这个时候就可以使用国内的源 
+
+$ gem sources --remove https://rubygems.org/  
+$ gem sources -a http://ruby.taobao.org/  
+
+
+有时候淘宝源也抽风，可以试试这个源地址
+ http://tokyo-m.rubygems.org/
+
+
+---更改gem配置使得以后在安装 gem 包时不生成 rdoc 和 ri -----------
+
+subl ~/.gemrc  打开 .gemrc文件，在里面写入
+
+install: --no-rdoc --no-ri
+update: --no-rdoc --no-ri
+
+-------------------------------------------------------------------------
+
+自定义 git 颜色
+ git config --global color.ui true
+
+自定义shell 颜色
+设置颜色可以在Linux用户个人的Shell配置文件~/.bashrc中完成，或者在全局配置文件/etc/bashrc中实现。 ，去掉里面的其中一行注释即可
+
+
+
+
+
+
+----------------------sublime---------------
+
+下载 http://sublimetext.iaixue.com/forum.php?mod=viewthread&tid=32  Sublime Text 3 Bulid 3047 ST中文论坛 简体中文版(Linux 32位和64位)
+安装插件： http://www.cssoul.com/post/f2e/Sublime-Text-2-Plugins-and-Extensions-for-Front-end-development Sublime Text 2 前端开发必备插件
+
+
+------------------安装rubymine--------------
+
+1，首先要安装jdk （rubymine 6.3.3版要求jdk Oracle JRE 1.6+ 或者 OpenJDK 1.7+）
+
+	http://blog.chinaunix.net/uid-26404477-id-3471246.html ubuntu 12.04安装jdk 
+
+
+2.根据rubymine 说明文档 安装 rubymine （执行rubymine.sh）
+
+  官方指导步骤：
+  解压 rubymine-6.3.3.tar.gz ，使用下面的命令：
+	tar xfz rubymine-6.3.3.tar.gz
+  运行 bin 目录下的 rubymine.sh
+
+
+
+rubymine  的相关ide设置：
+
+界面设置为暗色调：
+	IDE Settings --> Appearance : Theme 下拉框 选择 "Darcula"
+
+-------------------运行rails 项目--------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------linux 配置------------
+
+实时显示网络流量的插件
+
+http://blog.winclient.cn/linux/138.html
+添加PPA源安装Netspeed
+
+如果您觉得编译安装比较麻烦，也不希望代码和版本最新，可以通过添加 PPA 源的方式进行安装：
+
+sudo add-apt-repository ppa:nilarimogard/webupd8
+sudo apt-get update
+sudo apt-get install indicator-netspeed
+目前该 PPA 源支持 Ubuntu 14.04、Ubuntu 13.10、Ubuntu 12.10 和 Ubuntu 12.04 版本的 Netspeed 安装，其它版本只能通过源码编译安装。
+
+安装完成之后可以通过如下命令在后台执行 netspeed 程序
+
+
+indicator-netspeed 
+
+如果要开机自动执行 Netspeed，则需要手动在 Unity 面板中的 “启动应用程序”中创建开机启动项目。具体可以参看之前一篇文章的最后部分。 http://blog.winclient.cn/linux/72.html
+
+
+
+
