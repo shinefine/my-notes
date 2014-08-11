@@ -1,0 +1,32 @@
+所有的相关配置都是改变的 ~/.gitconfig  这个文件的内容
+
+
+【自定义 git 颜色】
+
+	 git config --global color.ui true
+
+【设置默认文本编辑器】
+	git config --global core.editor vim
+--------------------
+【对中文字符对支持 】
+
+http://blog.csdn.net/desert2009sz/article/details/8904440
+详细内容:
+git 在UTF-8字符集下可以工作得非常好：
+
+**在提交时，可以在提交说明中输入中文；
+**显示提交历史，能够正常显示提交说明中的中文字符；
+**可以添加名称为中文的文件，并可以在同样使用UTF-8字符集的Linux环境中克隆和检出；
+**可以创建带有中文字符的里程碑名称；
+
+通过将git配置变量 core.quotepath 设置为false， 可以解决中文文件名在git 命令输出中的显示问题。
+
+$ git config --global core.quotepath false  
+$ git status -s  
+
+
+【简化提交操作对别名】
+  git config --global alias.ci "commit -a -v"
+
+【好用的助手工具】
+	apt-get install tig
