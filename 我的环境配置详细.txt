@@ -87,7 +87,7 @@ curl https://raw.githubusercontent.com/fesplugas/rbenv-installer/master/bin/rben
 
 rbenv 安装完成后，记得将其初始化脚本放入 .bashrc 文件中
 
-然后执行 rbenv install bootstrap-ubuntu-12-04 来安装ruby所依赖的环境。
+然后执行 rbenv  bootstrap-ubuntu-12-04 来安装ruby所依赖的环境。
 
 然后可以安装ruby了   rbenv install 2.1.2 (安装时等的有点久，而且看不到进度)
 
@@ -198,6 +198,21 @@ rubymine  的相关ide设置：
 
 
 -------linux 配置------------
+【主题】
+14.04 由于升级了untity ，所以13.10 以下的主题都不能用于14 版本。 安装主题必须安装14.04对应版本的。
+
+这个是关于主题的帖子
+http://askubuntu.com/questions/454372/dark-gtk-theme-for-ubuntu-14-04
+
+我安装的是
+Numix Bluish 这个主题:
+
+sudo add-apt-repository ppa:noobslab/themes
+sudo apt-get update
+sudo apt-get install numix-bluish-theme
+
+
+安装主题后，使用工具 Unity tweak tool 来管理主题 ，该工具可在 ubuntu软件中心 里查找并安装
 
 
 【自定义shell 颜色】
@@ -228,3 +243,6 @@ indicator-netspeed
 
 
 
+【linux启动项设置】
+在终端中执行gnome-session-properties,会弹出一个“启动应用程序首选项”的菜单。更多信息见：
+http://blog.csdn.net/ydt_lwj/article/details/38442083
