@@ -87,6 +87,19 @@ curl https://raw.githubusercontent.com/fesplugas/rbenv-installer/master/bin/rben
 
 rbenv 安装完成后，记得将其初始化脚本放入 .bashrc 文件中
 
+【rbenv初始化】
+安装 rbenv 后，提示将下面的内容放入 ~/.bash_profile 文件中，但是官方文档特别说明，如果是用对ubuntu 桌面版，则使用对应的 ～/.bashrc文件而非 .bash_profile文件
+
+export RBENV_ROOT="${HOME}/.rbenv"
+if [ -d "${RBENV_ROOT}" ]; then
+  export PATH="${RBENV_ROOT}/bin:${PATH}"
+  eval "$(rbenv init -)"
+fi
+
+
+
+
+
 然后执行 rbenv  bootstrap-ubuntu-12-04 来安装ruby所依赖的环境。
 
 然后可以安装ruby了   rbenv install 2.1.2 (安装时等的有点久，而且看不到进度)
@@ -134,6 +147,19 @@ subl ~/.gemrc  打开 .gemrc文件，在里面写入
 install: --no-rdoc --no-ri
 update: --no-rdoc --no-ri
 
+
+查找gem的安装位置
+ gem environment
+
+(http://hlee.iteye.com/blog/698607)
+
+[查询服务器端可用的gem]
+命令：gem query –remote，简写为gem q –R
+
+[离线安装gem]
+在http://rubygems.org/上会发布gem，有个技巧就是知道要安装的gem的名字，例如名字为deprecated的gem，那么在浏览器中输入http://rubygems.org/gems/deprecated（gem名字）就可以查询名为deprecated的gem所有版本，只要把“deprecated”换成其他gem的名字就可以了。
+下载gem后，在CMD中切换到gem所在目录中，输入一下命令：
+gem install ./(gem-name) --local
 -------------------------------------------------------------------------
 关于 git  (详细内容参见git技巧文档)
 
@@ -169,6 +195,11 @@ rubymine  的相关ide设置：
 
 界面设置为暗色调：
 	IDE Settings --> Appearance : Theme 下拉框 选择 "Darcula"
+
+解决rubymine 对话框窗体不显示中文的问题
+http://www.educity.cn/wenda/350038.html  Ubuntu_IDE_idea_rubymine_部分_中文乱码方框_locale设置Ubuntu
+
+主要解决办法就是 IED settings Appearence -->> override default fonts by 在这里选中：Dialog plain
 
 -------------------运行rails 项目--------------
 
